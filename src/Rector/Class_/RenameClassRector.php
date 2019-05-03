@@ -9,6 +9,7 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\Expression;
+use PHPParser\Node\Stmt\Interface_;
 use PhpParser\Node\Stmt\Property;
 use PhpParser\Node\Stmt\Use_;
 use PhpParser\Node\Stmt\UseUse;
@@ -81,7 +82,14 @@ CODE_SAMPLE
      */
     public function getNodeTypes(): array
     {
-        return [Name::class, Property::class, FunctionLike::class, Expression::class];
+        return [
+            Name::class,
+            Property::class,
+            FunctionLike::class,
+            Expression::class,
+            Class_::class,
+            Interface_::class,
+        ];
     }
 
     /**
@@ -110,6 +118,14 @@ CODE_SAMPLE
             }
 
             return new FullyQualified($newName);
+        }
+
+        if ($node instanceof Node\Stmt\Namespace_) {
+            // $node->name = ??
+        }
+
+        if ($node instanceof Node\Stmt\ClassLike) {
+            // $node->name = ??
         }
 
         foreach ($this->oldToNewClasses as $oldType => $newType) {

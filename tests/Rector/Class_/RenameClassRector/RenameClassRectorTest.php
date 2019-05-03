@@ -27,6 +27,8 @@ final class RenameClassRectorTest extends AbstractRectorTestCase
             __DIR__ . '/Fixture/twig_case.php.inc',
             __DIR__ . '/Fixture/underscore_doc.php.inc',
             __DIR__ . '/Fixture/keep_return_tag.php.inc',
+            __DIR__ . '/Fixture/rename_class.php.inc',
+            __DIR__ . '/Fixture/rename_interface.php.inc',
         ]);
     }
 
@@ -44,6 +46,7 @@ final class RenameClassRectorTest extends AbstractRectorTestCase
                 Manual_Twig_Filter::class => TwigFilter::class,
                 'Twig_AbstractManualExtension' => AbstractManualExtension::class,
                 'Twig_Extension_Sandbox' => 'Twig\Extension\SandboxExtension',
+                'A\\B' => 'C\\D',
             ],
         ]];
     }
